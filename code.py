@@ -70,6 +70,18 @@ time.sleep(1)
 touch = touchio.TouchIn(board.D5)
 pixel = neopixel.NeoPixel(board.NEOPIXEL, 1)
 
+def default_word_wrap (sentence):
+    words = sentence.split(" ")
+    current_line_len = len(words[0])
+    wrapped_sentence = words[0]
+    for word in words[1:]:
+        if len(word) + current_line_len > 19:
+            wrapped_sentence += "\n"
+            current_line_len = 0
+        current_line_len += 1 + len(word)
+        wrapped_sentence += " " + word
+    return wrapped_sentence
+
 class State:
     def __init__(self):
         self.displaying_interaction = False
@@ -85,11 +97,13 @@ class State:
         else:
             self.mode = (self.mode + 1) % self.num_modes
             self._indicate_mode()
-            
+
     def touch_button(self):
         if not self.displaying_interaction:
             self.displaying_interaction = True
-            text_area.text = random.choice(outputs[self.mode])
+            text_area.text = \
+                default_word_wrap(
+                    random.choice(outputs[self.mode]))
     
     def _show_welcome_screen(self):
         text_area.text = "Press for an\ninteraction"
