@@ -11,31 +11,50 @@ from displayio import Group
 from adafruit_display_text import bitmap_label
 from adafruit_lc709203f import LC709203F
 
-outputs = [
-    # mode 0
-    [
-        "fly",
-        "fall",
-        "jump",
-        "Tell everyone three\nthings you're\nscared of.",
-    ],
-    # mode 1
-    [
-        "swim",
-        "sail",
-        "scuba dive",
-        "drown",
-    ],
-    # mode 2
-    [
-        "dig",
-        "spelunk",
-        "bury",
-        "tunnel",
-    ],
+mode_1 = [
+    "What is the farthest sound you can hear?",
+    "Pantomime something and i’ll guess what it is!",
+    "Let’s try to harmonize a note.",
+    "Give 3 compliments",
+    "Describe a person you love",
+    "Offer to hug someone creatively",
+    "Share 3 interesting textures",
+    "Describe something beautiful",
+    "Sing a song",
+    "Describe a wild experience",
+    "Temporarily trade an item of clothing.",
+    "Describe a pivotal time in your life",
+    "Find 3 beautiful things to share with someone",
+    "Describe something funny you’ve experienced",
+    "Do a pole dance",
+    "Pose like a famous art piece, and ask others to guess which",
+    "Describe a favorite body part",
+    "Tell a story without using words",
+    "Do an interpretive dance on a theme",
+    "Describe or show some of your greatest assets.",
+    "Share something pleasant that requires a sense other than sight.",
+    "Describe an unusual sensual experience that you love.",
+    "Share a secret",
+    "Describe a 'happy place.'",
+    "Describe what makes you a freak.",
+    "Describe an embarrassing moment.",
+    "Improvise a poem.",
+    "Describe how burning man influenced your life.",
+    "Tell everyone three things you're scared of.",
 ]
 
-colors = [(255,0,0), (0,255,0), (0,0,255)]
+mode_2 = [
+    "Kiss me somewhere.",
+    "Offer to kiss someone",
+    "Offer someone a lap dance.",
+    "Offer someone a massage",
+    "Offer to gently caress someone’s face",
+    "A Good Mutual Neck Sniff",
+]
+
+# Mode 0 is all of the modes lists together
+outputs = [mode_1 + mode_2, mode_1, mode_2]
+colors = [(255,0,0),(0,255,0), (0,0,255)]
 
 # Initialize screen and display battery voltage for one second
 text_area = bitmap_label.Label(terminalio.FONT, scale=2)
